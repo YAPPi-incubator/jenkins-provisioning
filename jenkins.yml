@@ -5,3 +5,5 @@
     - ops-tools
     - openjdk
     - jenkins
+  post_tasks:
+    - service: name=jenkins state=started
