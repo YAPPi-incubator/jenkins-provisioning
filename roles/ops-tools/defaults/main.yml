@@ -1,0 +1,42 @@
+---
+ops_tools_yum_pkgs:
+  - bind-utils
+  - bzip2
+  - curl
+  - git
+  - htop
+  - iftop
+  - iotop
+  - lshw
+  - lsof
+  - lzop
+  - mailx
+  - mlocate
+  - nc
+  - net-tools
+  - nfs-utils
+  - nmap
+  - pciutils
+  - procps
+  - screen
+  - setools
+  - setroubleshoot
+  - strace
+  - tcpdump
+  - telnet
+  - tmux
+  - tree
+  - unzip
+  - wget
+  - vim
+  - which
+  - whois
+  - python
+  - python-pip
+  - python-devel
+  - openssl-devel
+
+ops_tools_pip_pkgs:
+  - ansible
+  - testinfra
+

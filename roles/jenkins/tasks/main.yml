@@ -1,0 +1,15 @@
+---
+- name: install jenkins repo
+  get_url:
+    url: http://pkg.jenkins.io/redhat/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+- name: download jenkins repo gpg key
+  get_url:
+    url: http://pkg.jenkins.io/redhat/jenkins.io.key
+    dest: /etc/pki/rpm-gpg/jenkins.io.key
+- name: import jenkins repo gpg key
+  rpm_key:
+    key: /etc/pki/rpm-gpg/jenkins.io.key
+    state: present
+- name: install jenkins
+  yum: pkg=jenkins state=present
