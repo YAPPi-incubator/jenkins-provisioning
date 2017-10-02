@@ -1,0 +1,29 @@
+---
+- name: turn off Jenkins auto start
+  service: name=jenkins enabled=no
+
+- name: make sure jenkins is not running
+  service: name=jenkins state=stopped
+
+- name: remove jenkins default config
+  file: state=absent path={{ jenkins_location }}
+
+- name: clone Jenkins config from git repo
+  git: repo=https://github.com/YAPPi-incubator/jenkins-config.git dest={{ jenkins_location }}
+
+- name: set permissions
+  file: owner=jenkins group=jenkins recurse=yes path={{ jenkins_location }}
+
+- template:
+    src: pull-jenkins-config.sh.j2
+    dest: /usr/local/bin/pull-jenkins-config.sh
+    owner: centos
+    group: centos
+    mode: 0744
+
+- name: update Jenkins config
+  cron:
+    name: "update Jenkins config"
+    special_time: reboot
+    job: "/usr/local/bin/pull-jenkins-config.sh"
+    user: centos

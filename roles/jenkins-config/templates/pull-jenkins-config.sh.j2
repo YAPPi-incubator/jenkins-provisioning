@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd {{ jenkins_location }}
+git reset --hard
+git clean -fdx
+git checkout {{ jenkins_config_branch }}
+git pull
+sudo systemctl start jenkins
+sudo chown -R jenkins:jenkins {{ jenkins_location }}

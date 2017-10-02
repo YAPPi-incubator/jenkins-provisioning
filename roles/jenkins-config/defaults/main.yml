@@ -1,0 +1,3 @@
+---
+jenkins_location: /var/lib/jenkins/
+jenkins_config_branch: master
